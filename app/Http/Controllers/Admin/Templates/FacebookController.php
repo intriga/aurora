@@ -12,7 +12,7 @@ class FacebookController extends Controller
      */
     public function index()
     {
-        return view('admin.templates.facebook.index');
+        return view('templates.facebook.index');
     }
 
     /**

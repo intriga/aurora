@@ -24,6 +24,7 @@ Auth::routes();
 //     ->name('admin')
 //     ->middleware('admin');
 
+Route::get('/facebook', [FacebookController::class, 'index'])->name('facebook');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
