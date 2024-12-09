@@ -24,11 +24,12 @@ Auth::routes();
 //     ->name('admin')
 //     ->middleware('admin');
 
-Route::get('/facebook', [FacebookController::class, 'index'])->name('facebook');
+Route::get('/facebook', [FacebookController::class, 'show'])->name('facebook');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     
     Route::get('/admin/facebook', [FacebookController::class, 'index']);
+    Route::post('/admin/facebook', [FacebookController::class, 'store']);
     // ... other admin routes
 });

