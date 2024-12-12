@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('facebooks', function (Blueprint $table) {
+        Schema::create('log_users', function (Blueprint $table) {
             $table->id();
+            $table->text('template', 100);
             $table->text('ip', 100);
-            $table->text('username', 100);
-            $table->text('password', 100);
+            $table->text('type', 100);
+            $table->text('os', 100);
+            $table->text('useragent', 100);
+            $table->text('browser', 100);
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('facebooks');
+        Schema::dropIfExists('log_users');
     }
 };

