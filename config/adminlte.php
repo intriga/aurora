@@ -325,6 +325,11 @@ return [
             'url' => 'admin/',
             'icon' => 'fas fa-tachometer-alt',
         ],
+        [
+            'text' => 'Historial',
+            'url' => 'admin/historial',
+            'icon' => 'fas fa-book-dead',
+        ],
         ['header' => 'TEMPLATES'],
         // [
         //     'text' => 'profile',

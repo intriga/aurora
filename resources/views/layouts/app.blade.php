@@ -26,7 +26,7 @@
 
 {{-- Rename section content to content_body --}}
 
-@section('content')
+@section('content')    
     @yield('content_body')
 @stop
 
@@ -73,3 +73,6 @@
 
 </style>
 @endpush
+
+ <!-- Scripts -->
+ @vite(['resources/sass/app.scss', 'resources/js/app.js'])

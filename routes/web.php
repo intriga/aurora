@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\GetDataUserController;
 
+use App\Http\Controllers\Admin\HistorialController;
 use App\Http\Controllers\Admin\Templates\FacebookController;
 
 
@@ -29,6 +30,8 @@ Route::get('/facebook', [FacebookController::class, 'show'])->name('facebook');
 
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    
+    Route::get('/admin/historial', [HistorialController::class, 'index']);
     
     Route::get('/admin/facebook', [FacebookController::class, 'index']);
     Route::post('/admin/facebook', [FacebookController::class, 'store']);

